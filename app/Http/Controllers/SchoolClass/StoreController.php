@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Request $request)
     {
-        return "Menambah data siswa baru";
+        return "Melakukan penambahan data kelas";
     }
 }
