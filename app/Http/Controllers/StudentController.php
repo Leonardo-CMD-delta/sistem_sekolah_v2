@@ -38,7 +38,7 @@ class StudentController extends Controller
     public function show(string $id)
     {
         $title = "Sistem Sekolah - Detail Siswa";
-        $description = "Menampilkan daftar siswa yang terdaftar";
+        $description = "Menampilkan detail siswa yang terdaftar";
         
         return view('students.show', [
             'title' => $title,
@@ -49,7 +49,7 @@ class StudentController extends Controller
     public function create()
     {
         $title = "Sistem Sekolah - Menambahkan Siswa";
-        $description = "Menampilkan daftar siswa yang terdaftar";
+        $description = "Membuat daftar siswa";
 
         return view('students.create', [
             'title' => $title,
@@ -60,7 +60,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $title = "Sistem Sekolah - Edit Siswa";
-        $description = "Menampilkan daftar siswa yang terdaftar";
+        $description = "Mengedit daftar siswa yang terdaftar";
 
         return view('students.edit', [
             'title' => $title,
