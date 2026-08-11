@@ -11,72 +11,67 @@ class TeacherController extends Controller
         $title = "Sistem Sekolah - Daftar Guru";
         $teachers = [
             [
-            'id' => 1,
-            'nip' => '198501012024',
-            'name' => 'Budi Santoso',
-            'gender' => 'Laki-Laki',
-            'subject' => 'Akuntansi Dasar',
-            'phone' => '081234560001',
-            'status' => 'Aktif',
+                'id' => 1,
+                'nip' => '198501012024',
+                'name' => 'Budi Santoso',
+                'gender' => 'Laki-Laki',
+                'subject' => 'Akuntansi Dasar',
+                'phone' => '081234560001',
+                'status' => 'Aktif',
             ],
             [
-            'id' => 2,
-            'nip' => '198703152024',
-            'name' => 'Siti Aminah',
-            'gender' => 'Perempuan',
-            'subject' => 'Jaringan Komputer',
-            'phone' => '081234560002',
-            'status' => 'Aktif',
+                'id' => 2,
+                'nip' => '198703152024',
+                'name' => 'Siti Aminah',
+                'gender' => 'Perempuan',
+                'subject' => 'Jaringan Komputer',
+                'phone' => '081234560002',
+                'status' => 'Aktif',
             ]
-        ];    
-        
-        return view ('teachers.index', [
+        ];
+
+
+        return view('teachers.index', [
             'title' => $title,
-            'teachers' => $teachers
+            'teacher' => $teachers
         ]);
-    }
-
-    public function create()
-    {
-        $title = "Sistem Sekolah - Menambahkan Guru";
-        $description = "Membuat daftar guru";
-
-        return view('teachers.create', [
-            'title' => $title,
-            'description' => $description,
-        ]);
-    }
-
-    public function store(Request $request)
-    {
-        return "Melakukan penambahan data guru";
     }
 
     public function show(string $id)
     {
         $title = "Sistem Sekolah - Detail Guru";
-        $description = "Menampilkan detail guru yang terdaftar";
         
         return view('teachers.show', [
             'title' => $title,
-            'description' => $description,
+        ]);
+    }
+
+    public function create()
+    {
+        $title = "Sistem Sekolah - Edit Guru";
+        
+        return view('teachers.create', [
+            'title' => $title,
         ]);
     }
 
     public function edit(string $id)
     {
         $title = "Sistem Sekolah - Edit Guru";
-        $description = "Mengedit daftar guru yang terdaftar";
 
         return view('teachers.edit', [
             'title' => $title,
-            'description' => $description,
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function store()
     {
-        return "Melakukan perubahan data guru dengan ID: {$id}";
+        return "Menambah data guru baru";
+    }
+
+    public function update(string $id)
+    {
+        return "Mengubah data guru dengan ID: {$id}";
     }
 
     public function destroy(string $id)

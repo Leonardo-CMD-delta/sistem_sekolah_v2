@@ -32,14 +32,14 @@ class StudentController extends Controller
         ]);
     }
 
-       
-    
+
+
 
     public function show(string $id)
     {
         $title = "Sistem Sekolah - Detail Siswa";
-        $description = "Menampilkan detail siswa yang terdaftar";
-        
+        $description = "Menampilkan daftar siswa yang terdaftar";
+
         return view('students.show', [
             'title' => $title,
             'description' => $description,
@@ -49,7 +49,7 @@ class StudentController extends Controller
     public function create()
     {
         $title = "Sistem Sekolah - Menambahkan Siswa";
-        $description = "Membuat daftar siswa";
+        $description = "Menampilkan daftar siswa yang terdaftar";
 
         return view('students.create', [
             'title' => $title,
@@ -60,7 +60,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $title = "Sistem Sekolah - Edit Siswa";
-        $description = "Mengedit daftar siswa yang terdaftar";
+        $description = "Menampilkan daftar siswa yang terdaftar";
 
         return view('students.edit', [
             'title' => $title,
