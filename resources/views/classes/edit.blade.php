@@ -71,7 +71,7 @@
 
             @foreach ($majors as $major)
                 <option value="{{ $major['id'] }}"
-                    {{ $major['id']}}>
+                    {{ $major['id'] == $class['major_id'] ? 'selected' : ''}}>
                     {{ $major['name'] }}
                 </option>
             @endforeach
@@ -93,7 +93,7 @@
 
             @foreach ($teachers as $teacher)
                 <option value="{{ $teacher['id'] }}"
-                    {{ $teacher['id']}}>
+                    {{ $teacher['id'] == $class['teacher_id'] ? 'selected' : ''}}>
                     {{ $teacher['name']}}
                 </option>
             @endforeach

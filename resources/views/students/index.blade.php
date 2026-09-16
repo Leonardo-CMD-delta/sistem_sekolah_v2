@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title', "Sistem Sekolah - Daftar Siswa")
+@section('title', $title)
 
 @php
     $alertType = "WARNING";

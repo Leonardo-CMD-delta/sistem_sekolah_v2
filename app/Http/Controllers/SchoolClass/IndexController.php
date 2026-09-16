@@ -14,7 +14,7 @@ class IndexController extends Controller
     {
         $title = "Sistem Sekolah - Daftar Kelas";
 
-        $classes = [
+        $class = [
             [
                 'id' => 1,
                 'name' => 'XII AKL 1',
@@ -33,7 +33,7 @@ class IndexController extends Controller
 
         return view('classes.index', [
             'title' => $title,
-            'classes' => $classes,
+            'classes' => $class,
         ]);
     }
 }

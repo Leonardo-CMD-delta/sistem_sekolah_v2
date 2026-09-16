@@ -24,10 +24,10 @@
 
         <div>
 
-            <label for="nis"
+            <label for="nip"
                 class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">NIP</label>
 
-            <input type="text" id="nis" name="nis" placeholder="Contoh: 198501012024"
+            <input type="text" id="nip" name="nip" placeholder="Contoh: 198501012024"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
 
         </div>
@@ -66,16 +66,26 @@
 
         <div>
 
-            <label for="name" class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">
+            <label for="subject" class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">
 
                 Subject</label>
 
-            <input type="text" id="name" name="name" placeholder="Mata pelajaran yang diampu"
+            <input type="text" id="subject" name="subject" placeholder="Mata pelajaran yang diampu"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
 
         </div>
 
-         <div>
+        <div>
+
+            <label for="phone"
+                class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Phone</label>
+
+            <input type="text" id="phone" name="phone" value="081234560001"
+                class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
+
+        </div>
+
+        <div>
 
             <label for="status" class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Status
 
