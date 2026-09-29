@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -9,26 +10,11 @@ class StudentController extends Controller
     public function index()
     {
         $title = "Sistem Sekolah - Daftar Siswa";
-        $student = [
-            [
-                'id' => 1,
-                'nis' => '1001',
-                'name' => 'Andi',
-                'class' => 'XII TKJ 3',
-                'major' => 'TKJ'
-            ],
-            [
-                'id' => 2,
-                'nis' => '1002',
-                'name' => 'Budi',
-                'class' => 'XII TKJ 2',
-                'major' => 'TKJ'
-            ],
-        ];
+        $students = Student::select('id','nis','name','class','major')->get();
 
         return view ('students.index', [
             'title' => $title,
-            'students' => $student
+            'students' => $students
         ]);
     }
 
@@ -70,7 +56,17 @@ class StudentController extends Controller
 
     public function store()
     {
-        return "Menambah data siswa baru";
+        $validatedRequests = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'nis' => ['required', 'string', 'size:4', 'unique:students,nis'],
+            'class' => ['required', 'string', 'max:50'],
+            'major' => ['required', 'string', 'in:AKL,Bid,TKJ'],
+        ]);
+
+        Student::create($validatedRequests);
+
+        return redirect() -> route('students.index')
+            ->with('success', 'Berhasil Menambahkan Data Siswa Baru');
     } 
 
     public function update(string $id)
