@@ -23,11 +23,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            if(Schema::hasColumn('students', 'email')){
-                $table->dropUnique(['email']);
-                $table->string('email',100)->change();
-            }
-        });
+        // Schema::table('students', function (Blueprint $table) {
+        //     if(Schema::hasColumn('students', 'email')){
+        //         $table->dropUnique(['email']);
+        //         $table->string('email',255)->change();
+        //     }
+        // });
     }
 };
