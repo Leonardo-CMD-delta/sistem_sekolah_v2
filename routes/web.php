@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SchoolClass\CreateController;
 use App\Http\Controllers\SchoolClass\DestroyController;
@@ -16,8 +16,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication
+Route::get('/login', [AuthController::class, 'loginView'])->name('login-view')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register-view')->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post')->middleware('guest');
+Route::match(['post', 'delete'], '/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
 // Manajemen Guru
-Route::name('teachers.')->prefix('teachers')->group(function () {
+Route::name('teachers.')->middleware('role:teacher')->prefix('teachers')->group(function () {
     Route::get('/', [TeacherController::class, 'index'])->name('index');
     Route::get('/create', [TeacherController::class, 'create'])->name('create');
 
@@ -33,7 +40,7 @@ Route::name('teachers.')->prefix('teachers')->group(function () {
 });
 
 // Manajemen Siswa
-Route::name('students.')->prefix('students')->group(function () {
+Route::name('students.')->middleware(['role:student,teacher', 'auth'])->prefix('students')->group(function () {
     Route::get('/', [StudentController::class, 'index'])->name('index');
 
     Route::get('/create', [StudentController::class, 'create'])->name('create');
@@ -50,7 +57,7 @@ Route::name('students.')->prefix('students')->group(function () {
 });
 
 // Manajemen Kelas (Invokable)
-Route::name('classes.')->prefix('classes')->group(function () {
+Route::name('classes.')->middleware(['role:teacher', 'auth'])->prefix('classes')->group(function () {
     Route::get('/', IndexController::class)->name('index');
     Route::get('/create', CreateController::class)->name('create');
 
@@ -66,4 +73,4 @@ Route::name('classes.')->prefix('classes')->group(function () {
 });
 
 // Manajemen Jurusan
-Route::resource('majors', MajorController::class);
+Route::resource('majors', MajorController::class)->middleware(['role:teacher', 'auth']);
